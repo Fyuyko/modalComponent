@@ -1,0 +1,34 @@
+{
+  "defaultModal": {
+    "header": {
+      "title": "Заголовок модального окна",
+      "crossButton": true
+    },
+    "text": "Текст модального окна"
+  },
+  "alarmModal": {
+    "header": {
+      "title": "Заголовок модального окна",
+      "timer": 20
+    },
+    "backlight": "danger",
+    "icon": "danger.png",
+    "title": {
+      "text": "Что-то пошло не так",
+      "type": "danger"
+    },
+    "text": "Если вывелось данное окно, значит, вы нарушили какие-то правила",
+    "buttons": [
+      {
+        "text": "Скрыться",
+        "color": "danger",
+        "disabled": false
+      },
+      {
+        "text": "Раскаятся",
+        "color": "primary",
+        "disabled": false
+      }
+    ]
+  }
+}
