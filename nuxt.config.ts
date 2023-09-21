@@ -2,4 +2,9 @@
 export default defineNuxtConfig({
   devtools: { enabled: true },
   css: ["~/assets/styles/index.scss"],
+  ssr: false,
+  target: "static",
+  router: {
+    base: "/modalComponent/"
+  }
 })
