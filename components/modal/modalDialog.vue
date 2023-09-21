@@ -14,7 +14,7 @@
   function updateTimer() {
     if (num.value > 0) {
       num.value -= 1;
-    } else {
+    } else if (num.value === 0) {
       emits("modal-hide");
     }
   }
@@ -46,14 +46,14 @@
       <div class="modal-inner">
         <div class="modal-header">
           <h4 class="modal-header__title">{{modalConfig.header?.title}}</h4>
-          <button class="modal-header__close" v-if="modalConfig?.header.crossButton" @click="emits('modal-hide')">×</button>
+          <span class="modal-header__close" v-if="modalConfig?.header.crossButton" @click="emits('modal-hide')">×</span>
           <div class="modal-header__timer" v-if="modalConfig?.header?.timer">
             <modal-timer :num="num"/>
           </div>
         </div>
         <div class="modal-body">
-          <div v-if="modalConfig?.icon">
-            <img :src="`/assets/img/${modalConfig.icon}`" alt="">
+          <div class="modal-body__img" v-if="modalConfig?.icon">
+            <img :src="`_nuxt/assets/img/${modalConfig.icon}`" alt="">
           </div>
           <div v-if="modalConfig?.title">
             <h2 :style="{color: modalConfig.title.type}">{{modalConfig.title.text}}</h2>
@@ -69,7 +69,8 @@
               :key="index"
               :class="button.color"
               class="modal-footer__button"
-              @click="handleButtonClick(button)"
+              @click="e => handleButtonClick(button)"
+              :disabled="button.disabled"
           >
             {{button.text}}
           </button>
@@ -115,8 +116,9 @@
       border-radius: 15px 15px 0 0;
 
       &__title {
-        margin: 0;
+        margin: 0 auto;
         text-align: center;
+        max-width: 80%;
       }
 
       &__timer,
@@ -128,11 +130,20 @@
 
         padding: 10px;
       }
+
+      &__close {
+        cursor: pointer;
+      }
     }
 
     &-body {
       padding: 10px;
       text-align: center;
+
+      &__img img {
+        width: 30px;
+        height: auto;
+      }
     }
 
     &-footer {
@@ -153,6 +164,11 @@
         }
         &.primary {
           background-color: green;
+        }
+
+        &:disabled {
+          filter: grayscale(1);
+          cursor: not-allowed;
         }
       }
     }

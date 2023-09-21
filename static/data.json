@@ -22,10 +22,10 @@
       {
         "text": "Скрыться",
         "color": "danger",
-        "disabled": false
+        "disabled": true
       },
       {
-        "text": "Раскаятся",
+        "text": "Раскаяться",
         "color": "primary",
         "disabled": false
       }
